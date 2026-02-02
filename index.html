@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Valentine</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: radial-gradient(circle, #ff4d6d, #8b0000);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+}
+
+.card {
+  text-align: center;
+  color: white;
+  z-index: 2;
+}
+
+h1 {
+  margin-bottom: 40px;
+}
+
+button {
+  padding: 16px 48px;
+  font-size: 20px;
+  border: none;
+  border-radius: 999px;
+  margin: 10px;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+
+#yes {
+  background: #ffccd5;
+  color: #8b0000;
+}
+
+#no {
+  background: #8b0000;
+  color: white;
+  position: absolute;
+}
+
+.rose {
+  position: absolute;
+  font-size: 20vw;
+  pointer-events: none;
+  animation: explode 1.2s forwards;
+}
+
+@keyframes explode {
+  from {
+    transform: scale(0);
+    opacity: 1;
+  }
+  to {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h1>Veux-tu être ma Valentine ?</h1>
+  <button id="yes">Oui</button>
+  <button id="no">Non</button>
+</div>
+
+<script>
+const yes = document.getElementById("yes");
+const no = document.getElementById("no");
+
+let scale = 1;
+
+// Oui grossit lentement
+yes.addEventListener("mousemove", () => {
+  scale += 0.015;
+  yes.style.transform = `scale(${scale})`;
+});
+
+// Non fuit
+no.addEventListener("mouseenter", () => {
+  no.style.left = Math.random() * (window.innerWidth - 120) + "px";
+  no.style.top = Math.random() * (window.innerHeight - 60) + "px";
+});
+
+// Explosion contrôlée
+function explosion(delay) {
+  setTimeout(() => {
+    const rose = document.createElement("div");
+    rose.className = "rose";
+    rose.textContent = "🌹";
+    rose.style.left = Math.random() * window.innerWidth + "px";
+    rose.style.top = Math.random() * window.innerHeight + "px";
+    document.body.appendChild(rose);
+    setTimeout(() => rose.remove(), 1200);
+  }, delay);
+}
+
+yes.addEventListener("click", () => {
+  const timings = [0, 300, 600, 900, 1200, 1500];
+  timings.forEach(t => explosion(t));
+
+  // transition pendant explosion
+  setTimeout(() => {
+    window.location.href = "success.html";
+  }, 900);
+});
+</script>
+
+</body>
+</html>
