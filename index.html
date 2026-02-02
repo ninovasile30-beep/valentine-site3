@@ -108,7 +108,7 @@ function explosion(delay) {
 }
 
 yes.addEventListener("click", () => {
-  const timings = [0, 300, 600, 900, 1200, 1500];
+  const timings = Array.from({ length: 28 }, (_, i) => i * 120);
   timings.forEach(t => explosion(t));
 
   // transition pendant explosion
