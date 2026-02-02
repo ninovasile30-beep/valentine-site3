@@ -55,7 +55,7 @@ function explosion(delay) {
 }
 
 // 2–3 explosions page 2
-[0, 400, 800].forEach(t => explosion(t));
+Array.from({ length: 25 }, (_, i) => i * 120).forEach(t => explosion(t));
 </script>
 
 </body>
