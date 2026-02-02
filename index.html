@@ -52,6 +52,7 @@ button {
   font-size: 20vw;
   pointer-events: none;
   animation: explode 1.2s forwards;
+  filter: drop-shadow(0 0 20px crimson);
 }
 
 @keyframes explode {
@@ -82,8 +83,8 @@ const no = document.getElementById("no");
 let scale = 1;
 
 // Oui grossit lentement
-yes.addEventListener("mousemove", () => {
-  scale += 0.015;
+document.addEventListener("mousemove", () => {
+  scale += 0.004;
   yes.style.transform = `scale(${scale})`;
 });
 
