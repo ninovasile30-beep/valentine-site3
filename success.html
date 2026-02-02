@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Félicitations</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: radial-gradient(circle, #ffccd5, #ff4d6d);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+  color: #8b0000;
+}
+
+h1 {
+  text-align: center;
+  font-size: 48px;
+  z-index: 2;
+}
+
+.rose {
+  position: absolute;
+  font-size: 20vw;
+  animation: explode 1.2s forwards;
+}
+
+@keyframes explode {
+  from { transform: scale(0); opacity: 1; }
+  to { transform: scale(1); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<h1>Félicitation,<br>tu es maintenant ma Valentine !!!</h1>
+
+<script>
+function explosion(delay) {
+  setTimeout(() => {
+    const rose = document.createElement("div");
+    rose.className = "rose";
+    rose.textContent = "🌹";
+    rose.style.left = Math.random() * window.innerWidth + "px";
+    rose.style.top = Math.random() * window.innerHeight + "px";
+    document.body.appendChild(rose);
+    setTimeout(() => rose.remove(), 1200);
+  }, delay);
+}
+
+// 2–3 explosions page 2
+[0, 400, 800].forEach(t => explosion(t));
+</script>
+
+</body>
+</html>
