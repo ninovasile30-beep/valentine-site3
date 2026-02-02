@@ -42,6 +42,9 @@ h1 {
 
 <h1>Félicitation,<br>tu es maintenant ma Valentine !!!</h1>
 
+<!-- MUSIQUE -->
+<audio src="music.mp3" autoplay></audio>
+
 <script>
 function explosion(delay) {
   setTimeout(() => {
@@ -55,7 +58,7 @@ function explosion(delay) {
   }, delay);
 }
 
-// 2–3 explosions page 2
+// 25 explosions page 2
 Array.from({ length: 25 }, (_, i) => i * 120).forEach(t => explosion(t));
 </script>
 
